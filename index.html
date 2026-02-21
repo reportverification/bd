@@ -30,6 +30,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
         }
 
         .golden-text {
@@ -49,6 +50,7 @@
             border-bottom: 2px solid var(--gold-main);
             backdrop-filter: blur(10px);
             gap: 20px;
+            flex-wrap: wrap; /* Allows wrapping on mobile */
         }
 
         .header-left {
@@ -56,12 +58,14 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
+            min-width: 250px;
         }
 
         .header-center {
             flex: 1;
             display: flex;
             justify-content: center;
+            min-width: 150px;
         }
 
         .header-right {
@@ -71,6 +75,7 @@
             align-items: flex-end;
             text-align: right;
             gap: 5px;
+            min-width: 250px;
         }
 
         /* Header Texts */
@@ -79,6 +84,7 @@
             font-weight: 700;
             margin: 0;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         .tagline {
@@ -105,6 +111,7 @@
             margin: 0;
             color: white;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         .court-website {
@@ -138,7 +145,7 @@
             border-radius: 16px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            width: 90%;
+            width: 90%; /* Adapts to mobile width naturally */
         }
 
         .title {
@@ -165,6 +172,7 @@
             color: white;
             border-radius: 8px;
             outline: none;
+            width: 100%; /* Fixes mobile input size */
         }
 
         .search-area input:focus {
@@ -181,6 +189,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
+            white-space: nowrap;
         }
 
         .search-area button:hover {
@@ -197,23 +206,26 @@
             border-radius: 12px;
             padding: 30px;
             overflow: hidden;
+            width: 100%; /* Keeps it inside container */
         }
 
+        /* Dynamic Verified Stamp */
         .verified-stamp {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
-            font-size: 70px;
+            font-size: clamp(40px, 8vw, 70px); /* Scales based on screen size */
             font-weight: 900;
             color: rgba(212, 175, 55, 0.15);
             text-transform: uppercase;
             border: 6px solid rgba(212, 175, 55, 0.15);
-            padding: 15px 40px;
+            padding: 15px clamp(20px, 4vw, 40px);
             border-radius: 15px;
             pointer-events: none;
             z-index: 1;
-            letter-spacing: 8px;
+            letter-spacing: clamp(3px, 1vw, 8px);
+            white-space: nowrap;
         }
 
         .result-content {
@@ -221,24 +233,29 @@
             gap: 30px;
             position: relative;
             z-index: 2;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Vital for moving content on small screens */
         }
 
         .result-media {
             flex: 1;
-            min-width: 280px;
+            min-width: 100%; /* Full width on mobile */
+            display: flex;
+            justify-content: center;
         }
 
         .result-media img {
             width: 100%;
+            max-width: 400px;
             border-radius: 8px;
             border: 2px solid var(--gold-main);
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            object-fit: cover;
         }
 
         .result-details {
-            flex: 1.5;
-            min-width: 280px;
+            flex: 1;
+            min-width: 100%; /* Ensures text container doesn't overflow */
+            word-wrap: break-word; 
         }
 
         .badge {
@@ -250,19 +267,30 @@
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 20px;
+            text-align: center;
+            width: 100%; /* Centers badge on mobile */
         }
 
+        /* Better Text Formatting for Mobile */
         .result-details p {
             margin: 12px 0;
-            font-size: 16px;
+            font-size: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 8px;
+            display: flex;
+            flex-wrap: wrap; /* Prevents overflow */
+            gap: 10px;
+            align-items: flex-start;
         }
 
         .result-details strong {
-            display: inline-block;
-            width: 140px;
+            flex: 0 0 130px; /* Fixed space for titles */
             color: var(--gold-light);
+        }
+
+        .result-details span, .result-details b {
+            flex: 1; /* Data takes rest of the space */
+            word-break: break-word;
         }
 
         .error-msg {
@@ -293,11 +321,24 @@
             color: var(--gold-main);
         }
 
-        /* Responsive */
+        /* Responsive Settings */
+        @media (min-width: 769px) {
+            .result-media {
+                min-width: 300px;
+            }
+            .result-details {
+                min-width: 300px;
+            }
+            .badge {
+                width: auto; /* Badge left-aligned on PC */
+            }
+        }
+
         @media (max-width: 850px) {
             header {
                 flex-direction: column;
                 text-align: center;
+                padding: 20px;
             }
             .header-left, .header-center, .header-right {
                 align-items: center;
@@ -305,6 +346,19 @@
             }
             .search-area {
                 flex-direction: column;
+            }
+            .container {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            .result-box {
+                padding: 20px;
+            }
+            .company-name, .court-name {
+                font-size: 22px;
+            }
+            .title {
+                font-size: 20px;
             }
         }
     </style>
@@ -324,7 +378,6 @@
         
         <div class="header-center">
             <div class="logo-box">
-                <!-- এখানে আপনার লোগো থাকবে -->
                 <img src="logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/100?text=Logo'">
             </div>
         </div>
@@ -351,7 +404,7 @@
             <div class="result-content">
                 
                 <div class="result-media" id="mediaContainer">
-                    <!-- JPG Image Will Load Here -->
+                    <!-- Image will load here dynamically -->
                 </div>
 
                 <div class="result-details">
