@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Report Verification</title>
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -30,9 +28,10 @@
             background: var(--bg-gradient);
             color: var(--text-light);
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Golden Text Effect */
         .golden-text {
             background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
             -webkit-background-clip: text;
@@ -40,62 +39,88 @@
             text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Header Styling */
+        /* 3-Column Header Styling */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px 40px;
             border-bottom: 2px solid var(--gold-main);
             backdrop-filter: blur(10px);
-            flex-wrap: wrap;
             gap: 20px;
         }
 
-        .brand-section {
+        .header-left {
+            flex: 1;
             display: flex;
             flex-direction: column;
+            gap: 5px;
         }
 
+        .header-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+            gap: 5px;
+        }
+
+        /* Header Texts */
         .company-name {
-            font-size: 34px;
+            font-size: 26px;
             font-weight: 700;
             margin: 0;
             letter-spacing: 1px;
         }
 
         .tagline {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gold-light);
             font-style: italic;
-            margin-top: 5px;
-            letter-spacing: 1.5px;
+            margin-bottom: 10px;
         }
 
-        .company-info {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            text-align: right;
-        }
-
-        .info-text {
+        .contact-info {
             font-size: 14px;
-            line-height: 1.8;
             color: #ccc;
         }
-
-        .info-text i {
+        
+        .contact-info i {
             color: var(--gold-main);
-            width: 20px;
-            text-align: center;
             margin-right: 5px;
+            width: 15px;
+        }
+
+        .court-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .court-website {
+            font-size: 14px;
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .court-website:hover {
+            color: var(--gold-main);
         }
 
         .logo-box img {
-            width: 90px;
-            height: 90px;
+            width: 100px;
+            height: 100px;
             object-fit: contain;
             border-radius: 50%;
             border: 3px solid var(--gold-main);
@@ -105,6 +130,7 @@
 
         /* Main Verification Area */
         .container {
+            flex: 1;
             max-width: 900px;
             margin: 50px auto;
             background: var(--card-bg);
@@ -112,7 +138,7 @@
             border-radius: 16px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
+            width: 90%;
         }
 
         .title {
@@ -139,12 +165,10 @@
             color: white;
             border-radius: 8px;
             outline: none;
-            transition: 0.3s;
         }
 
         .search-area input:focus {
             border-color: var(--gold-main);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
 
         .search-area button {
@@ -157,13 +181,11 @@
             border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
 
         .search-area button:hover {
             background: linear-gradient(to bottom, #D4AF37, #AA771C);
             color: white;
-            transform: translateY(-2px);
         }
 
         /* Result Section */
@@ -177,7 +199,6 @@
             overflow: hidden;
         }
 
-        /* Golden Verified Stamp */
         .verified-stamp {
             position: absolute;
             top: 50%;
@@ -206,9 +227,6 @@
         .result-media {
             flex: 1;
             min-width: 280px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
         }
 
         .result-media img {
@@ -216,31 +234,6 @@
             border-radius: 8px;
             border: 2px solid var(--gold-main);
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .result-media iframe {
-            width: 100%;
-            height: 350px;
-            border-radius: 8px;
-            border: 2px solid var(--gold-main);
-            background: #fff;
-        }
-
-        .pdf-btn {
-            background: transparent;
-            border: 1px solid var(--gold-main);
-            color: var(--gold-main);
-            padding: 10px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .pdf-btn:hover {
-            background: var(--gold-main);
-            color: #000;
         }
 
         .result-details {
@@ -257,7 +250,6 @@
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
 
         .result-details p {
@@ -286,16 +278,29 @@
             margin-top: 20px;
         }
 
+        /* Footer Copyright */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #888;
+            font-size: 14px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: auto;
+        }
+
+        footer span {
+            color: var(--gold-main);
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             header {
                 flex-direction: column;
                 text-align: center;
-                justify-content: center;
-                padding: 20px;
             }
-            .company-info {
-                flex-direction: column-reverse;
+            .header-left, .header-center, .header-right {
+                align-items: center;
                 text-align: center;
             }
             .search-area {
@@ -306,24 +311,31 @@
 </head>
 <body>
 
+    <!-- Header Section -->
     <header>
-        <div class="brand-section">
-            <h1 class="company-name golden-text">মুন চৌধুরী অ্যান্ড অ্যাসোসিয়েটস</h1>
+        <div class="header-left">
+            <h1 class="company-name golden-text">মুন চৌধুরী</h1>
             <div class="tagline">নির্ভরযোগ্য আইনি সমাধান ও ডিজিটাল সার্ভে প্যানেল</div>
+            <div class="contact-info">
+                <div><i class="fas fa-phone-alt"></i> +880 1XXX-XXXXXX</div>
+                <div><i class="fas fa-envelope"></i> info@moonchy.com</div>
+            </div>
         </div>
-        <div class="company-info">
-            <div class="info-text">
-                <i class="fas fa-map-marker-alt"></i> চট্টগ্রাম, বাংলাদেশ<br>
-                <i class="fas fa-phone-alt"></i> +880 1XXX-XXXXXX<br>
-                <i class="fas fa-envelope"></i> info@moonchy.com<br>
-                <i class="fas fa-globe"></i> www.moonchy.com
-            </div>
+        
+        <div class="header-center">
             <div class="logo-box">
-                <img src="logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/90?text=Logo'">
+                <!-- এখানে আপনার লোগো থাকবে -->
+                <img src="logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/100?text=Logo'">
             </div>
+        </div>
+
+        <div class="header-right">
+            <h2 class="court-name">জেলা জজ আদালত, চট্টগ্রাম</h2>
+            <a href="https://www.moonchy.com" class="court-website"><i class="fas fa-globe"></i> www.moonchy.com</a>
         </div>
     </header>
 
+    <!-- Main Container -->
     <div class="container">
         <div class="title golden-text">ডকুমেন্ট ও রিপোর্ট ভেরিফিকেশন</div>
         
@@ -338,9 +350,8 @@
             <div class="verified-stamp">Verified</div>
             <div class="result-content">
                 
-                <!-- Dynamic Media File (Image/PDF) will load here -->
                 <div class="result-media" id="mediaContainer">
-                    <!-- JS will inject img or iframe here -->
+                    <!-- JPG Image Will Load Here -->
                 </div>
 
                 <div class="result-details">
@@ -355,6 +366,11 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer Section -->
+    <footer>
+        &copy; 2026 <span>Moon Chy</span>. All Copyright Reserved.
+    </footer>
 
     <script>
         async function verifyReport() {
@@ -381,19 +397,8 @@
                     document.getElementById('resStatus').innerText = report.status;
                     document.getElementById('resNote').innerText = report.note;
                     
-                    // ফাইল চেকিং (PDF নাকি Image)
-                    const fileExt = report.fileUrl.split('.').pop().toLowerCase();
-                    
-                    if(fileExt === 'pdf') {
-                        mediaContainer.innerHTML = `
-                            <iframe src="${report.fileUrl}"></iframe>
-                            <a href="${report.fileUrl}" target="_blank" class="pdf-btn"><i class="fas fa-file-pdf"></i> ফুল স্ক্রিনে PDF দেখুন</a>
-                        `;
-                    } else {
-                        mediaContainer.innerHTML = `
-                            <img src="${report.fileUrl}" alt="Verified Document">
-                        `;
-                    }
+                    // ফোল্ডার থেকে শুধু JPG ইমেজ লোড হবে
+                    mediaContainer.innerHTML = `<img src="images/${report.imageName}" alt="Verified Document">`;
                     
                     errorBox.style.display = 'none';
                     resultBox.style.display = 'block';
