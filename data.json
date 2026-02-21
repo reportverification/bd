@@ -5,18 +5,27 @@
       "clientName": "জনাব আব্দুল করিম",
       "issueDate": "২১-০২-২০২৬",
       "reportType": "ল্যান্ড সার্ভে রিপোর্ট",
-      "status": "Valid & Authenticated",
+      "status": "Verified & Authentic",
       "note": "জমির সীমানা ও পরিমাপ সঠিকভাবে যাচাই করা হয়েছে।",
-      "imageUrl": "images/report1.jpg"
+      "fileUrl": "files/report1.jpg"
     },
     {
       "id": "REP-1002",
       "clientName": "আহমেদ শরীফ",
       "issueDate": "২০-০২-২০২৬",
-      "reportType": "সিভিল কেস সামারি",
-      "status": "Valid",
-      "note": "মামলার সারসংক্ষেপ ও রায় সংযুক্ত করা হলো।",
-      "imageUrl": "images/report2.jpg"
+      "reportType": "সিভিল কেস সামারি (PDF)",
+      "status": "Verified",
+      "note": "মামলার সারসংক্ষেপ ও রায়ের কপি সংযুক্ত।",
+      "fileUrl": "files/case_summary.pdf"
+    },
+    {
+      "id": "REP-1003",
+      "clientName": "রহিম উদ্দিন",
+      "issueDate": "১৯-০২-২০২৬",
+      "reportType": "ডিজিটাল ম্যাপ",
+      "status": "Authentic",
+      "note": "সুইং ম্যাপ প্রো দিয়ে সার্ভে সম্পন্ন করা হয়েছে।",
+      "fileUrl": "files/map_survey.png"
     }
   ]
 }
