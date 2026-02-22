@@ -451,8 +451,7 @@
                     document.getElementById('resNote').innerText = report.note;
                     
                     // ফোল্ডার থেকে শুধু JPG ইমেজ লোড হবে
-                    mediaContainer.innerHTML = `<img src="images/${report.imageName}.jpg" alt="Verified Document">`;
-                    
+                    mediaContainer.innerHTML = `<img src="images/${report.id}.jpg" alt="Verified Document">`;
                     errorBox.style.display = 'none';
                     resultBox.style.display = 'block';
                 } else {
