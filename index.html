@@ -464,6 +464,68 @@
                 console.error(error);
             }
         }
+        <script>
+        // পেজ লোড হওয়ার সাথে সাথেই URL চেক করবে
+        window.onload = function() {
+            // URL থেকে 'id' প্যারামিটারটি খুঁজে বের করা
+            const urlParams = new URLSearchParams(window.location.search);
+            const idFromUrl = urlParams.get('id');
+
+            // যদি URL-এ কোনো ID থাকে, তাহলে ইনপুট বক্সে বসিয়ে স্বয়ংক্রিয়ভাবে ভেরিফাই করবে
+            if (idFromUrl) {
+                document.getElementById('reportId').value = idFromUrl;
+                verifyReport(idFromUrl);
+            }
+        };
+
+        // ভেরিফাই ফাংশন (ইনপুট বক্স বা URL—উভয় মাধ্যমেই কাজ করবে)
+        async function verifyReport(autoId = null) {
+            // যদি autoId দেওয়া থাকে (URL থেকে), সেটি নিবে; না হলে ইনপুট বক্স থেকে নিবে
+            const inputId = autoId || document.getElementById('reportId').value.trim();
+            const resultBox = document.getElementById('resultBox');
+            const errorBox = document.getElementById('errorBox');
+            const mediaContainer = document.getElementById('mediaContainer');
+            
+            if(!inputId) {
+                alert('অনুগ্রহ করে একটি রিপোর্ট নম্বর দিন।');
+                return;
+            }
+
+            try {
+                // আপনার ডেটা সোর্স (যদি bd/data.json হয়, তবে সেটি লিখবেন)
+                const response = await fetch('data.json');
+                const data = await response.json();
+                
+                // ডেটার সাথে ইনপুট মেলানো (case-insensitive করার জন্য toLowerCase ব্যবহার করা হলো)
+                const report = data.reports.find(r => r.id.toLowerCase() === inputId.toLowerCase());
+                
+                if(report) {
+                    document.getElementById('resId').innerText = report.id;
+                    document.getElementById('resName').innerText = report.clientName;
+                    document.getElementById('resDate').innerText = report.issueDate;
+                    document.getElementById('resType').innerText = report.reportType;
+                    document.getElementById('resStatus').innerText = report.status;
+                    document.getElementById('resNote').innerText = report.note;
+                    
+                    // ফোল্ডার থেকে শুধু JPG ইমেজ লোড হবে
+                    mediaContainer.innerHTML = `<img src="images/${report.imageName}" alt="Verified Document" onerror="this.style.display='none'">`;
+                    
+                    errorBox.style.display = 'none';
+                    resultBox.style.display = 'block';
+                    
+                    // সফল হলে URL-টি আপডেট করে দিবে (যাতে পেজ রিফ্রেশ না হয়)
+                    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + report.id;
+                    window.history.pushState({path:newUrl}, '', newUrl);
+
+                } else {
+                    resultBox.style.display = 'none';
+                    errorBox.style.display = 'block';
+                }
+            } catch (error) {
+                alert('সিস্টেম এরর! data.json ফাইলটি ঠিকভাবে কাজ করছে না।');
+                console.error(error);
+            }
+        }
     </script>
 </body>
 </html>
