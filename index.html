@@ -461,7 +461,7 @@
 
             try {
                 // আপনার ডেটা সোর্স (যেহেতু ডেটা bd ফোল্ডারে আছে)
-                const response = await fetch('bd/data.json');
+                const response = await fetch('data.json');
                 const data = await response.json();
                 
                 // ডেটার সাথে ইনপুট মেলানো (case-insensitive করার জন্য toLowerCase ব্যবহার করা হলো)
