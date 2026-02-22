@@ -30,7 +30,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+            overflow-x: hidden;
         }
 
         .golden-text {
@@ -40,7 +40,12 @@
             text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* 3-Column Header Styling */
+        /* Silver Text CSS for Company Name */
+        .silver-text {
+            color: #E0E0E0;
+            text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.2);
+        }
+
         header {
             display: flex;
             justify-content: space-between;
@@ -50,7 +55,7 @@
             border-bottom: 2px solid var(--gold-main);
             backdrop-filter: blur(10px);
             gap: 20px;
-            flex-wrap: wrap; /* Allows wrapping on mobile */
+            flex-wrap: wrap;
         }
 
         .header-left {
@@ -78,7 +83,6 @@
             min-width: 350px;
         }
 
-        /* Header Texts */
         .company-name {
             font-size: 26px;
             font-weight: 700;
@@ -135,7 +139,6 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* Main Verification Area */
         .container {
             flex: 1;
             max-width: 900px;
@@ -145,7 +148,7 @@
             border-radius: 16px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            width: 90%; /* Adapts to mobile width naturally */
+            width: 90%;
         }
 
         .title {
@@ -172,7 +175,7 @@
             color: white;
             border-radius: 8px;
             outline: none;
-            width: 100%; /* Fixes mobile input size */
+            width: 100%;
         }
 
         .search-area input:focus {
@@ -197,7 +200,6 @@
             color: white;
         }
 
-        /* Result Section */
         .result-box {
             display: none;
             position: relative;
@@ -206,16 +208,15 @@
             border-radius: 12px;
             padding: 30px;
             overflow: hidden;
-            width: 100%; /* Keeps it inside container */
+            width: 100%;
         }
 
-        /* Dynamic Verified Stamp */
         .verified-stamp {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
-            font-size: clamp(40px, 8vw, 70px); /* Scales based on screen size */
+            font-size: clamp(40px, 8vw, 70px);
             font-weight: 900;
             color: rgba(212, 175, 55, 0.15);
             text-transform: uppercase;
@@ -233,12 +234,12 @@
             gap: 30px;
             position: relative;
             z-index: 2;
-            flex-wrap: wrap; /* Vital for moving content on small screens */
+            flex-wrap: wrap;
         }
 
         .result-media {
             flex: 1;
-            min-width: 100%; /* Full width on mobile */
+            min-width: 100%;
             display: flex;
             justify-content: center;
         }
@@ -254,7 +255,7 @@
 
         .result-details {
             flex: 1;
-            min-width: 100%; /* Ensures text container doesn't overflow */
+            min-width: 100%;
             word-wrap: break-word; 
         }
 
@@ -268,28 +269,27 @@
             font-weight: bold;
             margin-bottom: 20px;
             text-align: center;
-            width: 100%; /* Centers badge on mobile */
+            width: 100%;
         }
 
-        /* Better Text Formatting for Mobile */
         .result-details p {
             margin: 12px 0;
             font-size: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 8px;
             display: flex;
-            flex-wrap: wrap; /* Prevents overflow */
+            flex-wrap: wrap;
             gap: 10px;
             align-items: flex-start;
         }
 
         .result-details strong {
-            flex: 0 0 130px; /* Fixed space for titles */
+            flex: 0 0 130px;
             color: var(--gold-light);
         }
 
         .result-details span, .result-details b {
-            flex: 1; /* Data takes rest of the space */
+            flex: 1;
             word-break: break-word;
         }
 
@@ -306,7 +306,6 @@
             margin-top: 20px;
         }
 
-        /* Footer Copyright */
         footer {
             text-align: center;
             padding: 20px;
@@ -321,17 +320,10 @@
             color: var(--gold-main);
         }
 
-        /* Responsive Settings */
         @media (min-width: 769px) {
-            .result-media {
-                min-width: 300px;
-            }
-            .result-details {
-                min-width: 300px;
-            }
-            .badge {
-                width: auto; /* Badge left-aligned on PC */
-            }
+            .result-media { min-width: 300px; }
+            .result-details { min-width: 300px; }
+            .badge { width: auto; }
         }
 
         @media (max-width: 850px) {
@@ -344,28 +336,16 @@
                 align-items: center;
                 text-align: center;
             }
-            .search-area {
-                flex-direction: column;
-            }
-            .container {
-                padding: 20px;
-                margin: 20px auto;
-            }
-            .result-box {
-                padding: 20px;
-            }
-            .company-name, .court-name {
-                font-size: 22px;
-            }
-            .title {
-                font-size: 20px;
-            }
+            .search-area { flex-direction: column; }
+            .container { padding: 20px; margin: 20px auto; }
+            .result-box { padding: 20px; }
+            .company-name, .court-name { font-size: 22px; }
+            .title { font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
         <div class="header-left">
             <h1 class="company-name silver-text">চৌধুরী</h1>
@@ -388,7 +368,6 @@
         </div>
     </header>
 
-    <!-- Main Container -->
     <div class="container">
         <div class="title golden-text">ডকুমেন্ট ও রিপোর্ট ভেরিফিকেশন</div>
         
@@ -420,7 +399,6 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
     <footer>
         &copy; 2026 <span>R.A Chy</span>. All Copyright Reserved.
     </footer>
@@ -438,7 +416,11 @@
             }
 
             try {
+                // Fetching from data.json in the same folder
                 const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
                 const data = await response.json();
                 const report = data.reports.find(r => r.id === inputId);
                 
@@ -450,8 +432,8 @@
                     document.getElementById('resStatus').innerText = report.status;
                     document.getElementById('resNote').innerText = report.note;
                     
-                    // ফোল্ডার থেকে শুধু JPG ইমেজ লোড হবে
-                    mediaContainer.innerHTML = `<img src="images/${report.imageName}.jpg" alt="Verified Document">`;
+                    // Direct path: Image is in the exact same folder as index.html
+                    mediaContainer.innerHTML = `<img src="${report.imageName}" alt="Verified Document">`;
                     
                     errorBox.style.display = 'none';
                     resultBox.style.display = 'block';
@@ -460,10 +442,20 @@
                     errorBox.style.display = 'block';
                 }
             } catch (error) {
-                alert('সিস্টেম এরর! data.json ফাইলটি ঠিকভাবে কাজ করছে না।');
-                console.error(error);
+                alert('ডেটা লোড করতে সমস্যা হচ্ছে। ফাইলগুলো লোকাল সার্ভার বা গিটহাবে রান করুন।');
+                console.error("Fetch Error:", error);
             }
         }
+
+        // Auto verify if ID is in the URL (QR Code support)
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const idFromUrl = urlParams.get('id');
+            if(idFromUrl) {
+                document.getElementById('reportId').value = idFromUrl;
+                verifyReport();
+            }
+        };
     </script>
 </body>
 </html>
