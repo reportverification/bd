@@ -30,14 +30,22 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+            overflow-x: hidden;
         }
 
+        /* Golden & Silver Text Effects */
         .golden-text {
             background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
             -webkit-background-clip: text;
             color: transparent;
             text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .silver-text {
+            background: linear-gradient(to right, #8e9eab, #ffffff, #a2b0ba, #eef2f3, #7a8996);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.4);
         }
 
         /* 3-Column Header Styling */
@@ -50,7 +58,7 @@
             border-bottom: 2px solid var(--gold-main);
             backdrop-filter: blur(10px);
             gap: 20px;
-            flex-wrap: wrap; /* Allows wrapping on mobile */
+            flex-wrap: wrap;
         }
 
         .header-left {
@@ -75,7 +83,7 @@
             align-items: flex-end;
             text-align: right;
             gap: 5px;
-            min-width: 350px;
+            min-width: 320px;
         }
 
         /* Header Texts */
@@ -85,10 +93,11 @@
             margin: 0;
             letter-spacing: 1px;
             line-height: 1.2;
+            white-space: nowrap; /* Keeps name in 1 line on desktop */
         }
 
         .tagline {
-            font-size: 18px;
+            font-size: 13px;
             color: var(--gold-light);
             font-style: italic;
             margin-bottom: 10px;
@@ -145,7 +154,7 @@
             border-radius: 16px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            width: 90%; /* Adapts to mobile width naturally */
+            width: 90%;
         }
 
         .title {
@@ -172,7 +181,7 @@
             color: white;
             border-radius: 8px;
             outline: none;
-            width: 100%; /* Fixes mobile input size */
+            width: 100%;
         }
 
         .search-area input:focus {
@@ -206,16 +215,15 @@
             border-radius: 12px;
             padding: 30px;
             overflow: hidden;
-            width: 100%; /* Keeps it inside container */
+            width: 100%;
         }
 
-        /* Dynamic Verified Stamp */
         .verified-stamp {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
-            font-size: clamp(40px, 8vw, 70px); /* Scales based on screen size */
+            font-size: clamp(40px, 8vw, 70px);
             font-weight: 900;
             color: rgba(212, 175, 55, 0.15);
             text-transform: uppercase;
@@ -233,12 +241,12 @@
             gap: 30px;
             position: relative;
             z-index: 2;
-            flex-wrap: wrap; /* Vital for moving content on small screens */
+            flex-wrap: wrap; /* Fixes mobile overflow */
         }
 
         .result-media {
             flex: 1;
-            min-width: 100%; /* Full width on mobile */
+            min-width: 100%;
             display: flex;
             justify-content: center;
         }
@@ -254,7 +262,7 @@
 
         .result-details {
             flex: 1;
-            min-width: 100%; /* Ensures text container doesn't overflow */
+            min-width: 100%;
             word-wrap: break-word; 
         }
 
@@ -268,28 +276,27 @@
             font-weight: bold;
             margin-bottom: 20px;
             text-align: center;
-            width: 100%; /* Centers badge on mobile */
+            width: 100%;
         }
 
-        /* Better Text Formatting for Mobile */
         .result-details p {
             margin: 12px 0;
             font-size: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 8px;
             display: flex;
-            flex-wrap: wrap; /* Prevents overflow */
+            flex-wrap: wrap; 
             gap: 10px;
             align-items: flex-start;
         }
 
         .result-details strong {
-            flex: 0 0 130px; /* Fixed space for titles */
+            flex: 0 0 130px; 
             color: var(--gold-light);
         }
 
         .result-details span, .result-details b {
-            flex: 1; /* Data takes rest of the space */
+            flex: 1; 
             word-break: break-word;
         }
 
@@ -321,7 +328,7 @@
             color: var(--gold-main);
         }
 
-        /* Responsive Settings */
+        /* Responsive Breakpoints */
         @media (min-width: 769px) {
             .result-media {
                 min-width: 300px;
@@ -330,7 +337,7 @@
                 min-width: 300px;
             }
             .badge {
-                width: auto; /* Badge left-aligned on PC */
+                width: auto; 
             }
         }
 
@@ -343,6 +350,14 @@
             .header-left, .header-center, .header-right {
                 align-items: center;
                 text-align: center;
+                min-width: auto;
+            }
+            .company-name {
+                font-size: 22px;
+                white-space: normal; /* Allows wrapping on mobile */
+            }
+            .court-name {
+                font-size: 22px;
             }
             .search-area {
                 flex-direction: column;
@@ -354,12 +369,6 @@
             .result-box {
                 padding: 20px;
             }
-            .company-name, .court-name {
-                font-size: 22px;
-            }
-            .title {
-                font-size: 20px;
-            }
         }
     </style>
 </head>
@@ -368,11 +377,12 @@
     <!-- Header Section -->
     <header>
         <div class="header-left">
-            <h1 class="company-name silver-text">মোহাম্মদ রশিদুল আলম চৌধুরী</h1>
-            <div class="tagline">সিভিল কোর্ট কমিশনার</div>
+            <!-- Company name is Silver -->
+            <h1 class="company-name silver-text">মুন চৌধুরী</h1>
+            <div class="tagline">নির্ভরযোগ্য আইনি সমাধান ও ডিজিটাল সার্ভে প্যানেল</div>
             <div class="contact-info">
-                <div><i class="fas fa-phone-alt"></i> +880 1819-940791</div>
-                <div><i class="fas fa-envelope"></i> commissioner.rac@gmail.com</div>
+                <div><i class="fas fa-phone-alt"></i> +880 1XXX-XXXXXX</div>
+                <div><i class="fas fa-envelope"></i> info@moonchy.com</div>
             </div>
         </div>
         
@@ -384,7 +394,7 @@
 
         <div class="header-right">
             <h2 class="court-name">জেলা জজ আদালত, চট্টগ্রাম</h2>
-            <a href="https://www.moonchy.com" class="court-website"><i class="fas fa-globe"></i> www.chattogram.judiciary.gov.bd</a>
+            <a href="https://www.moonchy.com" class="court-website"><i class="fas fa-globe"></i> www.moonchy.com</a>
         </div>
     </header>
 
@@ -422,49 +432,10 @@
 
     <!-- Footer Section -->
     <footer>
-        &copy; 2026 <span>R.A Chy</span>. All Copyright Reserved.
+        &copy; 2026 <span>Moon Chy</span>. All Copyright Reserved.
     </footer>
 
     <script>
-        async function verifyReport() {
-            const inputId = document.getElementById('reportId').value.trim();
-            const resultBox = document.getElementById('resultBox');
-            const errorBox = document.getElementById('errorBox');
-            const mediaContainer = document.getElementById('mediaContainer');
-            
-            if(!inputId) {
-                alert('অনুগ্রহ করে একটি রিপোর্ট নম্বর দিন।');
-                return;
-            }
-
-            try {
-                const response = await fetch('data.json');
-                const data = await response.json();
-                const report = data.reports.find(r => r.id === inputId);
-                
-                if(report) {
-                    document.getElementById('resId').innerText = report.id;
-                    document.getElementById('resName').innerText = report.clientName;
-                    document.getElementById('resDate').innerText = report.issueDate;
-                    document.getElementById('resType').innerText = report.reportType;
-                    document.getElementById('resStatus').innerText = report.status;
-                    document.getElementById('resNote').innerText = report.note;
-                    
-                    // ফোল্ডার থেকে শুধু JPG ইমেজ লোড হবে
-                    mediaContainer.innerHTML = `<img src="images/${report.imageName}" alt="Verified Document">`;
-                    
-                    errorBox.style.display = 'none';
-                    resultBox.style.display = 'block';
-                } else {
-                    resultBox.style.display = 'none';
-                    errorBox.style.display = 'block';
-                }
-            } catch (error) {
-                alert('সিস্টেম এরর! data.json ফাইলটি ঠিকভাবে কাজ করছে না।');
-                console.error(error);
-            }
-        }
-        <script>
         // পেজ লোড হওয়ার সাথে সাথেই URL চেক করবে
         window.onload = function() {
             // URL থেকে 'id' প্যারামিটারটি খুঁজে বের করা
@@ -492,7 +463,7 @@
             }
 
             try {
-                // আপনার ডেটা সোর্স (যদি bd/data.json হয়, তবে সেটি লিখবেন)
+                // আপনার ডেটা সোর্স (যেহেতু ডেটা bd ফোল্ডারে আছে)
                 const response = await fetch('data.json');
                 const data = await response.json();
                 
@@ -507,13 +478,13 @@
                     document.getElementById('resStatus').innerText = report.status;
                     document.getElementById('resNote').innerText = report.note;
                     
-                    // ফোল্ডার থেকে শুধু JPG ইমেজ লোড হবে
+                    // ফোল্ডার থেকে শুধু JPG ইমেজ লোড হবে (images ফোল্ডারটি রুট এ থাকলে)
                     mediaContainer.innerHTML = `<img src="images/${report.imageName}" alt="Verified Document" onerror="this.style.display='none'">`;
                     
                     errorBox.style.display = 'none';
                     resultBox.style.display = 'block';
                     
-                    // সফল হলে URL-টি আপডেট করে দিবে (যাতে পেজ রিফ্রেশ না হয়)
+                    // সফল হলে URL-টি আপডেট করে দিবে (যাতে পেজ রিফ্রেশ না হয় এবং লিংক শেয়ার করা যায়)
                     const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?id=' + report.id;
                     window.history.pushState({path:newUrl}, '', newUrl);
 
